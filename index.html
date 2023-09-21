@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Matematika Sederhana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Name -->
+    <p id="name">Name: Chiko Gita Satria</p>
+    <p id="name">Nim: 2215101053</p>
+    <p id="name">Repo:<a href="https://github.com/chiknwy/Tekweb" style="text-decoration: none;">Click Here!</a></p>
+    <h1   style="color: #a4bef3; ">Kalkulator Matematika Sederhana</h1>
+    <div id="fibonacci">
+        <h2>Deret Fibonacci</h2>
+        <form>
+            <label for="fibonacci-input">Masukkan Angka Ke-n:</label>
+            <input type="number" id="fibonacci-input" min="0">
+            <button type="button" onclick="calculateFibonacci()">Hitung</button>
+        </form>
+        <p>Hasil: <span id="fibonacci-result"></span></p>
+    </div>
+
+    <div id="volume">
+        <h2>Perhitungan Volume Bangun Ruang</h2>
+        <form>
+            <label for="shape-select">Pilih Bangun Ruang:</label>
+            <select id="shape-select">
+                <option value="kubus">Kubus</option>
+                <option value="balok">Balok</option>
+                <option value="bola">Bola</option>
+                <option value="tabung">Tabung</option>
+                <option value="kerucut">Kerucut</option>
+                <option value="limas">Limas</option>
+            </select>
+            <div id="kubus-form" style="display: block;">
+                <label for="kubus-side">Panjang Sisi Kubus:</label>
+                <input type="number" id="kubus-side">
+            </div>
+
+            <div id="balok-form" style="display:none;">
+                <label for="balok-panjang">Panjang balok:</label>
+                <input type="number" id="balok-panjang"><br>
+                <label for="balok-lebar">Lebar balok:</label>
+                <input type="number" id="balok-lebar"><br>
+                <label for="balok-tinggi">Tinggi balok:</label>
+                <input type="number" id="balok-tinggi"><br>
+            </div>
+            <div id="bola-form" style="display:none;">
+                <label for="bola-radius">Jari-Jari Bola:</label>
+                <input type="number" id="bola-radius">
+            </div>
+            <div id="tabung-form" style="display:none;">
+                <label for="tabung-radius">Jari-Jari Tabung:</label>
+                <input type="number" id="tabung-radius"><br>
+                <label for="tabung-tinggi">Tinggi Tabung:</label>
+                <input type="number" id="tabung-tinggi"><br>
+            </div>
+            <div id="kerucut-form" style="display:none;">
+                <label for="kerucut-radius">Jari-Jari Kerucut:</label>
+                <input type="number" id="kerucut-radius"><br>
+                <label for="kerucut-tinggi">Tinggi Kerucut:</label>
+                <input type="number" id="kerucut-tinggi"><br>
+            </div>
+            <div id="limas-form" style="display:none;">
+                <label for="limas-luas">Luas alas Limas:</label>
+                <input type="number" id="limas-luas"><br>
+                <label for="limas-tinggi">Tinggi Limas:</label>
+                <input type="number" id="limas-tinggi"><br>
+            </div>
+            
+            
+            <button type="button" onclick="calculateVolume()">Hitung</button>
+        </form>
+        <p>Hasil: <span id="volume-result"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

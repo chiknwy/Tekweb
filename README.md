@@ -1,2 +1,2 @@
-# bruh
-Chiko Gita Satria 2215101053   
+
+# Chiko Gita Satria 2215101053   

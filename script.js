@@ -8,7 +8,7 @@ function calculateFibonacci() {
     }
 }
 
-function fibonacci(n) {
+function fibonacci(n) { 
     if (n <= 1) {
         return n;
     }

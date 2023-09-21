@@ -28,14 +28,24 @@ input[type=number]{
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-#name{
+
+#showButton{  
+    font-family: consolas, Arial, sans-serif;
+    background-color: #0e0f19;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: bolder;
+    color: #a4bef3;
+}
+
+#dadir{
 
     font-family: consolas, Arial, sans-serif;
     background-color: #0e0f19;
     margin: 0;
     padding: 0;
-    text-align: center;
-    font-size: 30px;
+    font-size: 15px;
     color: #a4bef3;
 
 }

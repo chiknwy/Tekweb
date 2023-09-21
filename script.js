@@ -3,8 +3,9 @@ function calculateFibonacci() {
     if (!isNaN(n) && n >= 0) {
         const result = fibonacci(n);
         document.getElementById("fibonacci-result").textContent = result;
-    } else {
-        alert("Please enter a non-negative number.");
+    } 
+    else {
+        alert("Please enter a Positive number.");
     }
 }
 
@@ -25,6 +26,21 @@ function fibonacci(n) {
     return fibCurrent;
 }
 
+function hideshowDadir() {
+    const dadirElement = document.getElementById("dadir");
+    const showButton = document.getElementById("showButton");
+
+    if (dadirElement.style.display === "none" || dadirElement.style.display === "") {
+        dadirElement.style.display = "block";
+        showButton.innerText = "Hide Name";
+    } 
+    else {
+        dadirElement.style.display = "none";
+        showButton.innerText = "Show Name";
+    }
+}
+
+
 function calculateVolume() {
     const selectedShape = document.getElementById("shape-select").value;
     const cubeSide = parseFloat(document.getElementById("cube-side").value);
@@ -38,12 +54,13 @@ function calculateVolume() {
     const coneHeight = parseFloat(document.getElementById("cone-height").value);
     const pyramidBaseArea = parseFloat(document.getElementById("pyramid-base-area").value);
     const pyramidHeight = parseFloat(document.getElementById("pyramid-height").value);
+    const height = parseFloat(document.getElementById("pyramid-height").value,document.getElementById("cone-height").value, document.getElementById("rectangular-prism-height"));
 
     if (selectedShape === "cube" && !isNaN(cubeSide) && cubeSide >= 0) {
         const volume = cubeSide ** 3;
         document.getElementById("volume-result").textContent = `Cube Volume: ${volume.toFixed(2)}`;
     } 
-    else if (selectedShape === "rectangular-prism" && !isNaN(prismLength) && !isNaN(prismWidth) && !isNaN(prismHeight) && prismLength >= 0 && prismWidth >= 0 && prismHeight >= 0) {
+    else if (selectedShape === "rectangular-prism" && !isNaN(prismLength) && !isNaN(prismWidth) && !isNaN(prismHeight) && prismLength >= 0 && prismWidth >= 0 && prismHeight>= 0) {
         const volume = prismLength * prismWidth * prismHeight;
         document.getElementById("volume-result").textContent = `Rectangular Prism Volume: ${volume.toFixed(2)}`;
     } 
@@ -76,7 +93,8 @@ document.getElementById("shape-select").addEventListener("change", function () {
         const form = document.getElementById(formId);
         if (formId === `${selectedShape}-form`) {
             form.style.display = "block";
-        } else {
+        } 
+        else {
             form.style.display = "none";
         }
     }

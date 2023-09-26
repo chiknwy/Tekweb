@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <button value="show" id="showButton" onclick="hideshowDadir()">Hide Name</button>
+<!-- Name -->
+    <div id="dadir" style="display: block;">
+        <p>Name: Chiko Gita Satria</p>
+        <p>Nim: 2215101053 (IKI Class)</p>
+        <p>Repo: <a id="dadir" href="https://github.com/chiknwy/Tekweb" style="text-decoration: none;" target="_blank">Click Here!</a></p>
+        <p>Report: <a id="dadir" href="https://chiknwy.github.io/Tekweb/Javascript%20Web%20Report.pdf        " style="text-decoration: none;" target="_blank">Click Here!</a></p>
+    </div>
+    
+    <h1 style="color: #a4bef3;">Simple Calculator</h1>
+
+
+    <!-- Volume -->
+    <div id="volume">
+        <h2>Volume Calculation of Geometric Shapes</h2>
+        <form>
+            <label for="shape-select">Select a Geometric Shape:</label>
+            <select id="shape-select">
+                <option value="cube">Cube</option>
+                <option value="rectangular-prism">Rectangular Prism</option>
+                <option value="sphere">Sphere</option>
+                <option value="cylinder">Cylinder</option>
+                <option value="cone">Cone</option>
+                <option value="pyramid">Pyramid</option>
+            </select>
+            <div id="cube-form" style="display: block;">
+                <label for="cube-side">Cube Side Length:</label>
+                <input type="number" id="cube-side">
+            </div>
+
+            <div id="rectangular-prism-form" style="display:none;">
+                <label for="rectangular-prism-length">Rectangular Prism Length:</label>
+                <input type="number" id="rectangular-prism-length"><br>
+                <label for="rectangular-prism-width">Rectangular Prism Width:</label>
+                <input type="number" id="rectangular-prism-width"><br>
+                <label for="rectangular-prism-height">Rectangular Prism Height:</label>
+                <input type="number" id="rectangular-prism-height"><br>
+            </div>
+            <div id="sphere-form" style="display:none;">
+                <label for="sphere-radius">Sphere Radius:</label>
+                <input type="number" id="sphere-radius">
+            </div>
+            <div id="cylinder-form" style="display:none;">
+                <label for="cylinder-radius">Cylinder Radius:</label>
+                <input type="number" id="cylinder-radius"><br>
+                <label for="cylinder-height">Cylinder Height:</label>
+                <input type="number" id="cylinder-height"><br>
+            </div>
+            <div id="cone-form" style="display:none;">
+                <label for="cone-radius">Cone Radius:</label>
+                <input type="number" id="cone-radius"><br>
+                <label for="cone-height">Cone Height:</label>
+                <input type="number" id="cone-height"><br>
+            </div>
+            <div id="pyramid-form" style="display:none;">
+                <label for="pyramid-base-area">Pyramid Base Area:</label>
+                <input type="number" id="pyramid-base-area"><br>
+                <label for="pyramid-height">Pyramid Height:</label>
+                <input type="number" id="pyramid-height"><br>
+            </div>
+            
+            <button type="button" onclick="calculateVolume()">Calculate</button>
+        </form>
+        <p>Result: <span id="volume-result"></span></p>
+    </div>
+    
+    <!-- Fibonacci -->
+    <div id="fibonacci">
+        <h2>Fibonacci Sequence</h2>
+        <form>
+            <label for="fibonacci-input">Enter the Nth Number:</label>
+            <input type="number" id="fibonacci-input" min="0">
+            <button type="button" onclick="calculateFibonacci()">Calculate</button>
+        </form>
+        <p>Result: <span id="fibonacci-result"></span></p>
+    </div>
+    <footer>
+        <p>Created by Chiko Gita Satria</p>    
+        <p>2215101053</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

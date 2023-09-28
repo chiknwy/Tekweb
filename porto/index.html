@@ -12,8 +12,8 @@
         <nav class="container mx-auto flex">
             <div class="w-1/4 uppercase text-lg"> <!-- Logo -->
                 <a href="#">
-                    <span class="font-mono font-extrabold text-white">Chiko</span> <br>
-                    <span class="font-mono font-extralight text-blue-400">Satria</span>
+                    <span class="font-mono font-extrabold text-red-400">Chiko</span> <br>
+                    <span class="font-mono font-extralight text-white">Satria</span>
                 </a>
             </div> 
             <div class="w-1/2 flex items-center justify-evenly text-blue-200"> <!-- Links -->
@@ -34,19 +34,27 @@
     </header>
 
     <main class="container mx-auto py-10"> <!-- Main Content -->
-        <section id="home" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
-            <!-- Home section content -->
-            <h2 class="text-3xl font-bold text-white">Hello, My Name Is</h2>
-            <h3 class="text-5xl font-semibold text-blue-400">
-                <span>Chiko</span>
-                <span>Satria</span>
-            </h3>
-            <p class="mt-4 text-gray-400">
-                I'm a student at Universitas Pendidikan Ganesha, <br>
-                currently pursuing a degree in Computer Science. <br>
-                My passion lies in web development and UI/UX design.
-            </p>
-        </section>
+        <!--Hero-->
+<section id="home" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8 flex items-center">
+    <div class="w-2/3"> <!-- Left Content (Text) -->
+        <h2 class="text-3xl font-bold text-white">Hello, My Name Is</h2>
+        <h3 class="text-5xl font-semibold text-blue-400">
+            <span>Chiko</span>
+            <span>Satria</span>
+        </h3>
+        <p class="mt-4 text-gray-400">
+            I'm a student at Universitas Pendidikan Ganesha, <br>
+            currently pursuing a degree in Computer Science. <br>
+            My passion lies in web development and UI/UX design.
+        </p>
+    </div>
+    <div class="basis-1/2">
+        <img class="mx-auto" src="img/avatar.png" alt="Foto">
+    </div>
+</div>
+</div>
+</section>
+
 
         <section id="about" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
             <!-- About section content -->
@@ -64,16 +72,16 @@
             <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Portfolio items go here -->
                 <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold text-white">Project 1</h3>
-                    <p class="mt-2 text-gray-400">Description of project 1 goes here.</p>
+                    <a href="https://chiknwy.github.io/Tekweb/" target=”_blank”><h3 class="text-xl font-semibold text-white">Web Technology Task 1</h3></a>
+                    <a href="https://chiknwy.github.io/Tekweb/" target=”_blank”><p class="mt-2 text-gray-400">A task in Web Technology, I design a simple html and JavaScript program to calculate a geometric shapes and Fibonacci Sequence</p></a>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-xl font-semibold text-white">Project 2</h3>
-                    <p class="mt-2 text-gray-400">Description of project 2 goes here.</p>
+                    <p class="mt-2 text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut amet fugiat culpa minus quibusdam esse, reprehenderit asperiores quos numquam tenetur, aperiam ea necessitatibus est quo maxime vero at perspiciatis deserunt?</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg shadow-md">
                     <h3 class="text-xl font-semibold text-white">Project 3</h3>
-                    <p class="mt-2 text-gray-400">Description of project 3 goes here.</p>
+                    <p class="mt-2 text-gray-400">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut repellat et, voluptatem optio quasi tenetur aliquam sit. Omnis hic eaque, tempora suscipit labore quod debitis, unde, sit tempore distinctio quo?</p>
                 </div>
             </div>
         </section>
@@ -159,7 +167,7 @@
                     var targetElement = document.getElementById(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 50, // Adjust this value to offset the scroll position if needed
+                            top: targetElement.offsetTop - 100, // Adjust this value to offset the scroll position if needed
                             behavior: 'smooth'
                         });
                     }

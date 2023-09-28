@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
@@ -17,10 +17,10 @@
                 </a>
             </div> 
             <div class="w-1/2 flex items-center justify-evenly text-blue-200"> <!-- Links -->
-                <a href="#"><span>Home</span></a>
-                <a href="#"><span>About</span></a>
-                <a href="#"><span>Portfolio</span></a>
-                <a href="#"><span>Contact</span></a>
+                <a href="#home"><span>Home</span></a>
+                <a href="#about"><span>About</span></a>
+                <a href="#portfolio"><span>Portfolio</span></a>
+                <a href="#contact"><span>Contact</span></a>
             </div>
             <div class="w-1/4 flex justify-end"> <!-- Dark Mode Toggle -->
                 <!-- Dark Mode Button-->
@@ -34,7 +34,8 @@
     </header>
 
     <main class="container mx-auto py-10"> <!-- Main Content -->
-        <section class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
+        <section id="home" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
+            <!-- Home section content -->
             <h2 class="text-3xl font-bold text-white">Hello, My Name Is</h2>
             <h3 class="text-5xl font-semibold text-blue-400">
                 <span>Chiko</span>
@@ -47,7 +48,8 @@
             </p>
         </section>
 
-        <section class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
+        <section id="about" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
+            <!-- About section content -->
             <h2 class="text-3xl font-bold text-white">My Skills</h2>
             <ul class="mt-4 text-gray-400">
                 <li class="mb-2"><span class="text-blue-400 font-semibold">Web Development:</span> HTML, CSS, JavaScript, React</li>
@@ -56,7 +58,8 @@
             </ul>
         </section>
 
-        <section class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
+        <section id="portfolio" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8">
+            <!-- Portfolio section content -->
             <h2 class="text-3xl font-bold text-white">My Portfolio</h2>
             <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Portfolio items go here -->
@@ -75,7 +78,8 @@
             </div>
         </section>
 
-        <div id="contact" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8 text-white"> <!-- Contact -->
+        <section id="contact" class="bg-gray-900 p-10 rounded-lg shadow-lg mb-8 text-white"> <!-- Contact -->
+            <!-- Contact section content -->
             <div class="container mx-auto flex flex-col lg:flex-row items-center">
                 <div class="lg:w-1/2">
                     <div class="text-center lg:text-left">
@@ -84,7 +88,7 @@
                             Have a question or want to work together? Feel free to get in touch with me.
                         </p>
                     </div>
-        
+
                     <form action="#" method="POST" class="max-w-md mt-10">
                         <div class="mb-4">
                             <label for="name" class="block text-white font-semibold">Name</label>
@@ -113,7 +117,7 @@
                             <h5 class="font-thin">Jalan Gajah Mada Gang Drupadi , Singaraja, Bali, Indonesia</h5>
                         </div>
                     </div>
-        
+
                     <div class="flex flex-col lg:flex-row gap-5 p-5">
                         <div class="w-10 h-10 p-2 bg-blue-100 rounded-full">
                             <img class="w-full" src="img/phone call.svg" alt="Phone Icon">
@@ -123,7 +127,7 @@
                             <h5 class="font-thin">(+62) 85884642412</h5>
                         </div>
                     </div>
-        
+
                     <div class="flex flex-col lg:flex-row gap-5 p-5">
                         <div class="w-10 h-10 p-2 bg-blue-100 rounded-full">
                             <img class="w-full" src="img/mail.svg" alt="Email Icon">
@@ -135,7 +139,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
     </main>
 
@@ -144,5 +148,24 @@
             <p class="text-gray-400">&copy; 2023 Chiko Satria. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+                document.addEventListener('DOMContentLoaded', function() {
+            var scrollLinks = document.querySelectorAll('a[href^="#"]');
+            for (var i = 0; i < scrollLinks.length; i++) {
+                scrollLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 50, // Adjust this value to offset the scroll position if needed
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

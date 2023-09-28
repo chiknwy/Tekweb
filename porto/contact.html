@@ -19,7 +19,7 @@
                 <a href="https://chiknwy.github.io/Tekweb/porto/index.html"><span >Home</span></a>
                 <a href="https://chiknwy.github.io/Tekweb/porto/about.html"><span>About</span></a>
                 <a href="https://chiknwy.github.io/Tekweb/porto/portof.html"><span>Portfolio</span></a>
-                <a href=""><span class="text-blue-200">Contact</span></a>
+                <a href="#contact"><span class="text-blue-200">Contact</span></a>
             </div>
             <div class="w-1/4 flex justify-end">
                 
@@ -116,6 +116,23 @@
             <p class="text-blue-200">&copy; 2023 Chiko Satria. All Rights Reserved.</p>
         </div>
     </footer>
-        
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var scrollLinks = document.querySelectorAll('a[href^="#"]');
+            for (var i = 0; i < scrollLinks.length; i++) {
+                scrollLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

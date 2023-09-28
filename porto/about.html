@@ -76,6 +76,23 @@
             <p class="text-blue-200">&copy; 2023 Chiko Satria. All Rights Reserved.</p>
         </div>
     </footer>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var scrollLinks = document.querySelectorAll('a[href^="#"]');
+            for (var i = 0; i < scrollLinks.length; i++) {
+                scrollLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

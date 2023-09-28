@@ -6,5 +6,6 @@
         "editorLineNumber.foreground": "#00ff00",
         "editorLineNumber.activeForeground": "#ff0000"
     },
+    "livePreview.defaultPreviewPath": "/about.html",
     
 }

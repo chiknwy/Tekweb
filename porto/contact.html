@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-blue-200">
+    <header class="px-5 sticky top-0 bg-gray-700 py-5 bg-#857885"> 
+        <nav class="container mx-auto flex">
+            <div class="w-1/4 uppercase text-lg"> <!-- Logo -->
+                <a href="#">
+                    <span class="font-extrabold text-blue-400">Chiko</span> <br> 
+                    <span class="font-extralight text-indigo-500">Satria</span> 
+                </a>
+            </div> 
+            <div class=" text-blue-400 w-1/2 flex items-center justify-evenly text-A4BEF3"> 
+                <a href="https://chiknwy.github.io/Tekweb/porto/index.html"><span >Home</span></a>
+                <a href="https://chiknwy.github.io/Tekweb/porto/about.html" target="_blank"><span>About</span></a>
+                <a href="https://chiknwy.github.io/Tekweb/porto/portof.html"><span>Portfolio</span></a>
+                <a href=""><span class="text-blue-200">Contact</span></a>
+            </div>
+            <div class="w-1/4 flex justify-end">
+                
+                <span class="hidden dark:inline ml-4">
+                    <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 text-7FFFB4"> 
+                         
+                    </svg>
+                </span>
+            </div>
+        </nav>  
+    </header>
+
+    <main class="container mx-auto py-10"> <!-- Main Content -->
+
+        <section id="contact" class="bg-gray-800 p-10 rounded-lg shadow-lg mb-8 text-blue-200"> 
+            <!-- Contact section content -->
+            <div class="container mx-auto flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2">
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-3xl font-bold text-green-200">Contact Me</h2>
+                        <p class="mt-4 text-blue-200">
+                            Have a question or want to work together? Feel free to get in touch with me.
+                        </p>
+                    </div>
+
+                    <form action="#" method="POST" class="max-w-md mt-10">
+                        <div class="mb-4">
+                            <label for="name" class="block text-blue-200 font-semibold">Name</label>
+                            <input class="text-blue-200 bg-gray-800 border rounded-md px-4 py-2 w-full focus:ring-7FFFB4" type="text" id="name" name="name" required /> 
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-blue-200 font-semibold">Email</label>
+                            <input class="text-blue-200 bg-gray-800 border rounded-md px-4 py-2 w-full focus:ring-7FFFB4" type="email" id="email" name="email" required /> 
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-blue-200 font-semibold">Message</label>
+                            <textarea class="text-blue-200 bg-gray-800 border rounded-md px-4 py-2 w-full h-32 focus:ring-7FFFB4" id="message" name="message" required></textarea> 
+                        </div>
+                        <div class="text-center">
+                            <button class="hover:bg-87A0B2 bg-7FFFB4 bg-gray-800 border text-blue-200 font-semibold py-2 px-4 rounded-md w-full" type="submit">Send Email</button> 
+                        </div>
+                    </form>
+                </div>
+                <div class="lg:w-1/2 mt-10 lg:mt-0">
+                    <div class="flex flex-col lg:flex-row gap-5 p-5">
+                        <div class="w-10 h-10 p-2 bg-7FFFB4 rounded-full bg-gray-800 border">
+                            <img class="w-full" src="img/pin.svg" alt="Location Icon">
+                        </div>
+                        <div>
+                            <h4 class="text-lg  text-blue-200 font-medium">Address</h4>
+                            <h5 class="font-thin">Jalan Gajah Mada Gang Drupadi , Singaraja, Bali, Indonesia</h5>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row gap-5 p-5">
+                        <div class="bg-gray-800 border w-10 h-10 p-2 bg-7FFFB4 rounded-full ">
+                            <img class="w-full" src="img/phone call.svg" alt="Phone Icon">
+                        </div>
+                        <div>
+                            <h4 class="text-lg text-blue-200 font-medium">Phone Call</h4>
+                            <h5 class="font-thin">(+62) 85884642412</h5>
+                        </div>
+                    </div>
+
+                    <div class=" flex flex-col lg:flex-row gap-5 p-5">
+                        <div class="bg-gray-800 border w-10 h-10 p-2 bg-7FFFB4 rounded-full">
+                            <img class="w-full" src="img/mail.svg" alt="Email Icon">
+                        </div>
+                        <div>
+                            <h4 class="text-lg text-blue-200 font-medium">E-Mail</h4>
+                            <h5 class="font-thin">chikogitasatria23@gmail.com</h5>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row gap-5 p-5">
+                        <div class="bg-gray-800 border w-10 h-10 p-2 bg-7FFFB4 rounded-full">
+                            <img class="w-full" src="img/Github.svg" alt="Github Icon">
+                        </div>
+                        <div>
+                            <h4 class="text-lg text-blue-200 font-medium">GitHub</h4>
+                            <a href="https://github.com/chiknwy" target="_blank" class="flex items-center">
+                                <h5 class="font-thin">Chiknwy</h5>
+                                <img class="w-3 ml-2 color" src="img/link.svg" alt="link Icon">
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer class="bg-gray-950 py-5"> 
+        <div class="container mx-auto text-center">
+            <p class="text-blue-200">&copy; 2023 Chiko Satria. All Rights Reserved.</p>
+        </div>
+    </footer>
+        
+</body>
+</html>

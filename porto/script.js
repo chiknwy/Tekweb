@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ... (previous code)
+    // UPDATED CODE!!
 
     var scrollLinks = document.querySelectorAll('a[href^="#"]');
     for (var i = 0; i < scrollLinks.length; i++) {

@@ -15,6 +15,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Get the footer element
+const footer = document.getElementById("footer");
+
+// Variable to store the last scroll position
+let lastScrollPosition = window.pageYOffset;
+
+// Function to update the footer opacity based on scroll direction
+function updateFooterOpacity() {
+    const currentScrollPosition = window.pageYOffset;
+    if (currentScrollPosition > lastScrollPosition) {
+        // Scrolling down, fade in the footer
+        footer.style.opacity = "1";
+    } else {
+        // Scrolling up, fade out the footer
+        footer.style.opacity = "0";
+    }
+    lastScrollPosition = currentScrollPosition;
+}
+
+// Add a scroll event listener to call the updateFooterOpacity function
+window.addEventListener("scroll", updateFooterOpacity);
+
+// Initial call to set the initial opacity
+updateFooterOpacity();
+
+
+
     // Show/hide back to top button
     const menuToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");

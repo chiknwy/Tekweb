@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sectionObserver = new IntersectionObserver(handleIntersection, {
         root: null, // Use the viewport as the root
         rootMargin: '0px', // No margin
-        threshold: 0.2, // Trigger when 20% of the section is visible
+        threshold: 0.1, 
     });
 
     // Observe each section

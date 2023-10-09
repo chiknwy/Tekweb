@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to handle the intersection of sections
+
     function handleIntersection(entries, observer) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -9,34 +9,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Create an intersection observer
     const sectionObserver = new IntersectionObserver(handleIntersection, {
-        root: null, // Use the viewport as the root
-        rootMargin: '0px', // No margin
+        root: null, 
+        rootMargin: '0px', 
         threshold: 0.1, 
     });
 
-    // Observe each section
     const sections = document.querySelectorAll('.transition-opacity.transform');
     sections.forEach((section) => {
         sectionObserver.observe(section);
     });
 
-    // Rest of your existing JavaScript code
     var scrollLinks = document.querySelectorAll('a[href^="#"]');
-    for (var i = 0; i < scrollLinks.length; i++) {
-        scrollLinks[i].addEventListener('click', function (e) {
-            e.preventDefault();
-            var targetId = this.getAttribute('href').substring(1);
-            var targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
+for (var i = 0; i < scrollLinks.length; i++) {
+    scrollLinks[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        for (var j = 0; j < scrollLinks.length; j++) {
+            scrollLinks[j].classList.remove('selected');
+        }
+        
+        this.classList.add('selected');
+        
+        var targetId = this.getAttribute('href').substring(1);
+        var targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+    });
+}
+
 
     const menuToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");

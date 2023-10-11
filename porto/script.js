@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     var scrollLinks = document.querySelectorAll('a[href^="#"]');
-for (var i = 0; i < scrollLinks.length; i++) {
+    for (var i = 0; i < scrollLinks.length; i++) {
     scrollLinks[i].addEventListener('click', function (e) {
         e.preventDefault();
         

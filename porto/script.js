@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    
+
+
     function handleIntersection(entries, observer) {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -64,4 +67,42 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
         }
     });
+
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    function updateTime() {
+        const timeContainer = document.getElementById('time-container');
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        
+        if (hours >= 0 && hours < 12) {
+
+            timeContainer.textContent = `${hours}:${minutes}:${seconds} AM`;
+        }
+        // else {
+        //     timeContainer.textContent = `${hours-12}:${minutes}:${seconds} PM`;
+        // }
+
+        if (hours >= 6 && hours < 10) {
+            timeContainer.textContent = `Hi there! Good Morning! 🌞`;
+        }
+        else if (hours >= 10 && hours < 15) {
+            timeContainer.textContent = 'Hi there! Good Afternoon! 🌤️';
+        }
+        else if (hours >= 15 && hours < 21) {
+            timeContainer.textContent = `Hi there! Good Evening! 🌇`;
+        }
+        else {
+            timeContainer.textContent = `Hi there! what are you doing at this time? 🌚`;
+        }
+        
+      }
+    
+      // Initial call to set the time when the page loads
+      updateTime();
+    
+      // Update the time every second
+      setInterval(updateTime, 1000);
+    
 });

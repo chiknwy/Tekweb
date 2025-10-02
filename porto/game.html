@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Showcase - Portfolio</title>
+    <link rel = "icon" href = "img/lgo.png" type = "image/x-icon">
+    <!-- Menggunakan Tailwind CSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menambahkan sedikit custom style untuk transisi yang lebih halus */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Style untuk Modal (Fullscreen Image) */
+        .modal {
+            display: none; /* Sembunyikan secara default */
+            position: fixed; /* Tetap di posisi yang sama bahkan saat di-scroll */
+            z-index: 1000; /* Tampil di atas elemen lain */
+            padding-top: 60px; /* Jarak dari atas */
+            left: 0;
+            top: 0;
+            width: 100%; /* Lebar penuh */
+            height: 100%; /* Tinggi penuh */
+            overflow: auto; /* Aktifkan scroll jika gambar terlalu besar */
+            background-color: rgba(0,0,0,0.9); /* Hitam dengan transparansi */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 800px;
+            animation-name: zoom;
+            animation-duration: 0.4s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0.5); opacity: 0;}
+            to {transform:scale(1); opacity: 1;}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media only screen and (max-width: 700px){
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-blue-200 font-sans">
+    <!-- Header/Navigasi -->
+    <header class="px-5 sticky top-0 bg-gray-900/80 py-5 backdrop-blur-sm z-10">
+        <nav class="container mx-auto flex items-center justify-between">
+            <div class="uppercase text-lg flex items-center space-x-2">
+                <a href="#">
+                    <span class="font-extrabold text-blue-400">Chiko</span><br>
+                    <span class="font-extralight text-indigo-500">Satria</span>
+                </a>
+            </div>
+            <!-- Menu untuk Desktop -->
+            <div class="text-blue-400 items-center space-x-6 hidden sm:flex"> 
+                <a href="https://chiknwy.github.io/Tekweb/porto/index.html" class="hover:text-white transition-colors duration-300"><span>Home</span></a>
+                <a href="https://chiknwy.github.io/Tekweb/porto/about.html" class="hover:text-white transition-colors duration-300"><span>About</span></a>
+                <a href="https://chiknwy.github.io/Tekweb/porto/index.html#portfolio" class="text-blue-200 hover:text-white transition-colors duration-300"><span>Portfolio</span></a>
+                <a href="https://chiknwy.github.io/Tekweb/porto/contact.html" class="hover:text-white transition-colors duration-300"><span>Contact</span></a>
+            </div>
+            <div class="w-11 h-11 flex">
+                <img src="https://placehold.co/44x44/111827/7f9cf5?text=CS" alt="logo" class="rounded-full">
+            </div>
+            <!-- Tombol Menu untuk Mobile -->
+            <div class="sm:hidden relative">
+                <div>
+                    <button id="menu-toggle" class="text-blue-400 hover:text-white transition-transform transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Dropdown Menu Mobile -->
+                <div id="menu" class="hidden absolute right-0 mt-2 py-2 bg-gray-800 rounded-lg shadow-xl w-48">
+                    <a href="https://chiknwy.github.io/Tekweb/porto/index.html" class="block px-4 py-2 text-blue-200 hover:bg-gray-700 hover:text-white">Home</a>
+                    <a href="https://chiknwy.github.io/Tekweb/porto/about.html" class="block px-4 py-2 text-blue-200 hover:bg-gray-700 hover:text-white">About</a>
+                    <a href="https://chiknwy.github.io/Tekweb/porto/index.html#portfolio" class="block px-4 py-2 text-blue-200 hover:bg-gray-700 hover:text-white">Portfolio</a>
+                    <a href="https://chiknwy.github.io/Tekweb/porto/contact.html" class="block px-4 py-2 text-blue-200 hover:bg-gray-700 hover:text-white">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="container mx-auto py-10 px-5">
+
+        <!-- Judul dan Deskripsi Game -->
+        <section id="game-intro" class="bg-gray-800 p-8 md:p-10 rounded-lg shadow-lg mb-10 fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-bold text-green-300 mb-4">The Leak's Nights</h1>
+            <p class="text-lg text-blue-200 leading-relaxed">
+                <span class="font-semibold">The Leak’s Nights</span> adalah game horror first-person bertema budaya Bali, berlatar di sebuah desa yang
+                tengah bersiap untuk pementasan <em>Calonarang</em>. Pemain berperan sebagai mahasiswa yang pulang kampung
+                dan tanpa sengaja memicu rangkaian kejadian supranatural terkait <em>Leak</em>—makhluk bayangan yang
+                menghantui mereka yang meremehkan tradisi. Tujuan pemain adalah mengungkap rahasia desa, memecahkan
+                teka-teki ritual, dan pada akhirnya menyalakan dupa suci untuk menghentikan kutukan. Gameplay berdurasi
+                sekitar <strong>1–2 jam</strong> dengan fokus pada atmosfer, eksplorasi, dan environmental storytelling.
+            </p>
+        </section>
+
+        <!-- Showcase Video Gameplay -->
+        <section id="game-video" class="bg-gray-800 p-8 md:p-10 rounded-lg shadow-lg mb-10 fade-in-up">
+            <h2 class="text-3xl font-bold text-green-300 mb-6">Video Demo</h2>
+            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-900">
+                <iframe 
+                    src="https://drive.google.com/file/d/1SECqz52MrwxK2gWbXLT6Y1X7HnKBl45-/preview" 
+                    class="w-full h-full"
+                    allow="autoplay">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Galeri Foto & Screenshot -->
+        <section id="game-gallery" class="bg-gray-800 p-8 md:p-10 rounded-lg shadow-lg fade-in-up">
+            <h2 class="text-3xl font-bold text-green-300 mb-6">Galeri Foto & Screenshot</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gambar-gambar ini sekarang bisa diklik -->
+                <div class="bg-gray-700 p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="img/ssgame/ss1game.png" alt="Screenshot Game 1" class="rounded-md w-full h-auto cursor-pointer">
+                </div>
+                <div class="bg-gray-700 p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="img/ssgame/ss1lobby.png" alt="Screenshot Game 2" class="rounded-md w-full h-auto cursor-pointer">
+                </div>
+                <div class="bg-gray-700 p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="img\ssgame\ssdevelopingstage1.png" alt="Screenshot Game 3" class="rounded-md w-full h-auto cursor-pointer">
+                </div>
+                <div class="bg-gray-700 p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="img\ssgame\ssdevelopingstage.png" alt="Artwork Game 1" class="rounded-md w-full h-auto cursor-pointer">
+                </div>
+                <div class="bg-gray-700 p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="img\ssgame\ssdevelopingstage2.png" alt="Desain Karakter" class="rounded-md w-full h-auto cursor-pointer">
+                </div>
+                <div class="bg-gray-700 p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="img\ssgame\ssdevelopingstage3.png" alt="Gambar Lainnya" class="rounded-md w-full h-auto cursor-pointer">
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Modal/Lightbox untuk Fullscreen Image -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950/50 py-5 mt-10"> 
+        <div class="container mx-auto text-center">
+            <p class="text-blue-200">&copy; 2023 Chiko Satria. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script untuk toggle menu mobile
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Script untuk animasi fade-in saat scroll
+        const sections = document.querySelectorAll('.fade-in-up');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Script untuk Modal Gambar
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const galleryImages = document.querySelectorAll("#game-gallery img");
+        const span = document.getElementsByClassName("close")[0];
+
+        galleryImages.forEach(img => {
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        // Saat pengguna mengklik (x), tutup modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // Saat pengguna mengklik di luar gambar, tutup modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+

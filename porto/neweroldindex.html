@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chiko Satria — Frontend Engineer</title>
+  <link rel = "icon" href = "img/lgo.png" type = "image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
@@ -368,7 +369,6 @@
     .project-img {
       height: 200px; overflow: hidden;
       background: var(--surface2);
-      position: relative;
     }
     .project-img img {
       width: 100%; height: 100%; object-fit: cover;
@@ -550,188 +550,6 @@
     }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-    /* ── THESIS ── */
-    .thesis-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      position: relative;
-    }
-    .thesis-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
-    }
-    .thesis-header {
-      padding: 40px 48px 32px;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(52,211,153,0.03), rgba(56,189,248,0.03));
-    }
-    .thesis-badge {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent3); margin-bottom: 16px;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .thesis-badge::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent3); }
-    .thesis-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(22px, 3vw, 32px); font-weight: 800;
-      color: var(--text-bright); line-height: 1.2; margin-bottom: 10px;
-      letter-spacing: -0.02em;
-    }
-    .thesis-sub {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; font-style: italic;
-    }
-    .thesis-body { padding: 40px 48px; }
-    .thesis-overview {
-      font-size: 15px; line-height: 1.8; color: var(--text);
-      margin-bottom: 40px; max-width: 800px;
-    }
-    .thesis-overview strong { color: var(--accent3); font-weight: 500; }
-    .thesis-pillars {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; margin-bottom: 36px;
-    }
-    .pillar {
-      background: var(--surface2); padding: 28px 24px;
-      border: 1px solid var(--border);
-      position: relative; overflow: hidden;
-      transition: border-color 0.3s;
-    }
-    .pillar:hover { border-color: rgba(52,211,153,0.25); }
-    .pillar-icon { font-size: 22px; margin-bottom: 12px; display: block; }
-    .pillar-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 14px; font-weight: 700; color: var(--text-bright); margin-bottom: 8px;
-    }
-    .pillar-text { font-size: 13px; line-height: 1.6; color: var(--text); }
-    .thesis-stack-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--text-dim); margin-bottom: 12px;
-    }
-    .thesis-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .ttag {
-      font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
-      padding: 6px 14px;
-      background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.2);
-      color: var(--accent3); border-radius: 2px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .ttag:hover { background: rgba(52,211,153,0.12); border-color: rgba(52,211,153,0.35); }
-    @media (max-width: 900px) {
-      .thesis-header { padding: 28px 24px; }
-      .thesis-body { padding: 28px 24px; }
-      .thesis-pillars { grid-template-columns: 1fr; }
-    }
-
-    /* ── CUSTOM CARD VISUALS (no-image fallback) ── */
-    .card-visual {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: flex-start; justify-content: flex-end;
-      padding: 20px 24px; overflow: hidden;
-    }
-    .card-visual-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-    .card-visual-content { position: relative; z-index: 1; }
-    .card-visual-icon { font-size: 32px; display: block; margin-bottom: 8px; line-height: 1; }
-    .card-visual-label {
-      font-family: 'Space Mono', monospace; font-size: 10px;
-      letter-spacing: 0.1em; text-transform: uppercase;
-    }
-
-    /* Horror — dark red/crimson */
-    .card-visual--horror {
-      background: linear-gradient(135deg, #0d0508 0%, #1a0610 60%, #050810 100%);
-    }
-    .card-visual--horror .card-visual-grid {
-      background-image:
-        linear-gradient(rgba(220,38,38,0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(220,38,38,0.07) 1px, transparent 1px);
-      mask-image: radial-gradient(ellipse at 40% 60%, black 30%, transparent 75%);
-    }
-    .card-visual--horror::before {
-      content: ''; position: absolute; bottom: -40px; right: -40px;
-      width: 180px; height: 180px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(220,38,38,0.1), transparent 70%);
-    }
-    .card-visual--horror .card-visual-label { color: rgba(252,165,165,0.5); }
-
-    /* Network — teal/cyan */
-    .card-visual--network {
-      background: linear-gradient(135deg, #050c10 0%, #071418 60%, #050810 100%);
-    }
-    .card-visual--network .card-visual-grid {
-      background-image:
-        linear-gradient(rgba(56,189,248,0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56,189,248,0.07) 1px, transparent 1px);
-      mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
-    }
-    .card-visual--network::before {
-      content: ''; position: absolute; top: -40px; left: -40px;
-      width: 180px; height: 180px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(56,189,248,0.08), transparent 70%);
-    }
-    .card-visual--network .card-visual-label { color: rgba(125,211,252,0.5); }
-
-    /* ── THESIS PROJECT CARD ── */
-    .project-card--thesis { border-color: rgba(52,211,153,0.2); }
-    .project-card--thesis:hover { border-color: rgba(52,211,153,0.45); }
-    .project-card--thesis:hover .project-arrow { opacity: 1; transform: translate(2px,-2px); color: var(--accent3); }
-
-    .thesis-img {
-      height: 200px; overflow: hidden; position: relative;
-      background: var(--bg);
-    }
-    .thesis-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #050c10 0%, #071a14 50%, #050810 100%);
-      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
-      padding: 20px 24px; overflow: hidden;
-    }
-    .thesis-bg-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(52,211,153,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(52,211,153,0.06) 1px, transparent 1px);
-      background-size: 28px 28px;
-      mask-image: radial-gradient(ellipse at 60% 40%, black 30%, transparent 75%);
-    }
-    .thesis-bg::before {
-      content: '{ }';
-      position: absolute; top: 16px; right: 20px;
-      font-family: 'Space Mono', monospace; font-size: 52px; font-weight: 700;
-      color: rgba(52,211,153,0.07); letter-spacing: -4px; line-height: 1;
-      pointer-events: none;
-    }
-    .thesis-bg::after {
-      content: '';
-      position: absolute; top: -60px; left: -60px;
-      width: 220px; height: 220px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(52,211,153,0.08), transparent 70%);
-      pointer-events: none;
-    }
-    .thesis-bg-content { position: relative; z-index: 1; }
-    .thesis-chip {
-      display: inline-block;
-      font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--accent3); background: rgba(52,211,153,0.1);
-      border: 1px solid rgba(52,211,153,0.25); padding: 3px 10px; border-radius: 2px;
-      margin-bottom: 6px;
-    }
-    .thesis-inst {
-      display: block;
-      font-family: 'Space Mono', monospace; font-size: 10px;
-      color: var(--text-dim); letter-spacing: 0.06em;
-    }
-
     /* line decoration */
     .deco-line {
       width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--accent3), transparent);
@@ -756,7 +574,6 @@
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">Skills</a>
-      <a href="#thesis">Thesis</a>
       <a href="#portfolio">Work</a>
       <a href="#contact">Contact</a>
     </div>
@@ -768,7 +585,6 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#home" onclick="closeMobile()">Home</a>
     <a href="#about" onclick="closeMobile()">Skills</a>
-    <a href="#thesis" onclick="closeMobile()">Thesis</a>
     <a href="#certificate" onclick="closeMobile()">Certificates</a>
     <a href="#portfolio" onclick="closeMobile()">Work</a>
     <a href="#pastedu" onclick="closeMobile()">Education</a>
@@ -784,11 +600,11 @@
         <h1 class="hero-name">
           <span class="highlight">Chiko</span><br>Satria
         </h1>
-        <p class="hero-role">// Backend Engineer &amp; Blockchain Developer</p>
+        <p class="hero-role">// Frontend Engineer &amp; UI Developer</p>
         <p class="hero-bio">
-          Computer Science fresh graduate specializing in backend systems, blockchain technology, 
-          and secure authentication. My thesis explores dual wallet authentication on smart contracts 
-          using Node.js and JWT — bridging Web3 security with modern backend architecture.
+          Computer Science fresh graduate passionate about crafting responsive, interactive, 
+          and user-centered web applications. I turn ideas into intuitive digital experiences 
+          using clean code and thoughtful UI/UX.
         </p>
         <div class="hero-actions">
           <a href="#portfolio" class="btn-primary">View My Work</a>
@@ -797,7 +613,7 @@
       </div>
 
       <div class="hero-avatar reveal">
-        <img src="https://chiknwy.github.io/imgstock/avatar.png" alt="Chiko Satria">
+        <img src="img\fotoback.JPG" alt="Chiko Satria">
         <div class="avatar-tag">CS · Feb 2026</div>
       </div>
     </section>
@@ -810,122 +626,58 @@
 
         <div class="skills-grid">
           <div class="skill-card reveal">
-            <div class="skill-cat">Backend Development</div>
-            <h3>Server & APIs</h3>
+            <div class="skill-cat">Web Development</div>
+            <h3>Frontend & Backend</h3>
             <div class="skill-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">Vue.js</span>
               <span class="tag">Node.js</span>
-              <span class="tag">Express.js</span>
-              <span class="tag">REST API</span>
-              <span class="tag">JWT Auth</span>
               <span class="tag">Laravel</span>
-              <span class="tag">MySQL</span>
+              <span class="tag">Leaflet JS</span>
             </div>
           </div>
           <div class="skill-card reveal">
-            <div class="skill-cat">Blockchain & Web3</div>
-            <h3>Smart Contracts</h3>
+            <div class="skill-cat">Design</div>
+            <h3>UI/UX Design</h3>
             <div class="skill-tags">
-              <span class="tag green">Solidity</span>
-              <span class="tag green">Ethereum</span>
-              <span class="tag green">Smart Contracts</span>
-              <span class="tag green">Web3.js</span>
-              <span class="tag green">MetaMask</span>
-              <span class="tag green">Hardhat</span>
+              <span class="tag green">Figma</span>
+              <span class="tag green">Canva</span>
+              <span class="tag green">Responsive Design</span>
+              <span class="tag green">Wireframing</span>
             </div>
           </div>
           <div class="skill-card reveal">
             <div class="skill-cat">Languages</div>
             <h3>Programming</h3>
             <div class="skill-tags">
-              <span class="tag purple">JavaScript</span>
               <span class="tag purple">Python</span>
               <span class="tag purple">Java</span>
               <span class="tag purple">C++</span>
+              <span class="tag purple">C</span>
               <span class="tag purple">C#</span>
-              <span class="tag purple">Solidity</span>
+              <span class="tag purple">Lua</span>
             </div>
           </div>
           <div class="skill-card reveal">
-            <div class="skill-cat">Frontend & Other</div>
-            <h3>UI & Tools</h3>
+            <div class="skill-cat">Other</div>
+            <h3>Game Development</h3>
             <div class="skill-tags">
-              <span class="tag">React</span>
-              <span class="tag">Vue.js</span>
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">Figma</span>
-              <span class="tag">Git</span>
-              <span class="tag">Leaflet JS</span>
+              <span class="tag">Roblox Studio</span>
+              <span class="tag">Greenfoot</span>
+              <span class="tag">Game Design</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- THESIS -->
-    <section id="thesis" style="position:relative;z-index:1;">
-      <div class="section-wrap">
-        <div class="section-label reveal">03 — Thesis</div>
-        <h2 class="section-title reveal">Research Highlight</h2>
-
-        <div class="thesis-card reveal">
-          <div class="thesis-header">
-            <div class="thesis-badge">Undergraduate Thesis · Feb 2026</div>
-            <h3 class="thesis-title">Dual Wallet Authentication on Smart Contract Blockchain Using Node.js &amp; JWT</h3>
-            <p class="thesis-sub">Implementasi Autentikasi Dua Dompet pada Smart Contract Blockchain</p>
-          </div>
-
-          <div class="thesis-body">
-            <div class="thesis-overview">
-              <p>
-                This thesis proposes a novel authentication architecture that combines <strong>two blockchain wallet addresses</strong> 
-                as a dual-factor identity layer, secured by <strong>JWT tokens</strong> issued by a Node.js backend. 
-                Smart contracts on the Ethereum network enforce wallet ownership verification on-chain, 
-                while the off-chain JWT layer handles session management and API authorization — 
-                creating a hybrid Web2/Web3 security model that is both trustless and developer-friendly.
-              </p>
-            </div>
-
-            <div class="thesis-pillars">
-              <div class="pillar">
-                <div class="pillar-icon">⛓</div>
-                <div class="pillar-label">On-Chain</div>
-                <div class="pillar-text">Smart contract enforces dual wallet ownership. Each authentication requires a cryptographic signature from both registered wallets.</div>
-              </div>
-              <div class="pillar">
-                <div class="pillar-icon">🔐</div>
-                <div class="pillar-label">Off-Chain</div>
-                <div class="pillar-text">Node.js backend validates on-chain proof, then issues a signed JWT for stateless API session management.</div>
-              </div>
-              <div class="pillar">
-                <div class="pillar-icon">🔑</div>
-                <div class="pillar-label">Dual Factor</div>
-                <div class="pillar-text">Two separate wallet addresses act as independent authentication factors — neither alone is sufficient to gain access.</div>
-              </div>
-            </div>
-
-            <div class="thesis-stack">
-              <div class="thesis-stack-label">Tech Stack</div>
-              <div class="thesis-tags">
-                <span class="ttag">Solidity</span>
-                <span class="ttag">Node.js</span>
-                <span class="ttag">JWT</span>
-                <span class="ttag">Ethereum</span>
-                <span class="ttag">Web3.js</span>
-                <span class="ttag">Hardhat</span>
-                <span class="ttag">MetaMask</span>
-                <span class="ttag">Express.js</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- CERTIFICATES -->
     <section id="certificate" style="position:relative;z-index:1;">
       <div class="section-wrap">
-        <div class="section-label reveal">04 — Certificates</div>
+        <div class="section-label reveal">03 — Certificates</div>
         <h2 class="section-title reveal">Credentials</h2>
 
         <div class="certs-grid">
@@ -966,7 +718,7 @@
     <!-- EDUCATION -->
     <section id="pastedu" style="position:relative;z-index:1;">
       <div class="section-wrap">
-        <div class="section-label reveal">05 — Education</div>
+        <div class="section-label reveal">04 — Education</div>
         <h2 class="section-title reveal">Academic Background</h2>
 
         <div class="edu-grid">
@@ -1006,52 +758,18 @@
     <!-- PORTFOLIO -->
     <section id="portfolio" style="position:relative;z-index:1;">
       <div class="section-wrap">
-        <div class="section-label reveal">06 — Portfolio</div>
+        <div class="section-label reveal">05 — Portfolio</div>
         <h2 class="section-title reveal">Selected Work</h2>
 
         <div class="portfolio-grid">
 
-          <!-- 01 — THESIS (featured first) -->
-          <a class="project-card project-card--thesis reveal" href="https://repo.undiksha.ac.id/27578/" target="_blank">
-            <div class="project-arrow">↗</div>
-            <div class="project-img thesis-img">
-              <div class="thesis-bg">
-                <div class="thesis-bg-grid"></div>
-                <div class="thesis-bg-content">
-                  <span class="thesis-chip">Undergraduate Thesis · 2026</span>
-                  <span class="thesis-inst">Universitas Pendidikan Ganesha</span>
-                </div>
-              </div>
-            </div>
-            <div class="project-body">
-              <div class="project-num">01 — Thesis</div>
-              <div class="project-title">Dual Wallet Authentication via Smart Contract 2FA</div>
-              <p class="project-desc">A decentralized 2FA system on Ethereum Sepolia Testnet. Two wallet signatures replace OTP — resistant to phishing, SIM swapping, and MITM attacks. Built with Solidity, Node.js, React, and Web3.js.</p>
-              <div class="project-tech">
-                <span class="tag green">Solidity</span>
-                <span class="tag green">Ethereum</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">JWT</span>
-                <span class="tag">React</span>
-                <span class="tag">Web3.js</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 02 — THE LEAK'S NIGHTS (custom visual, no broken img) -->
           <a class="project-card reveal" href="https://chiknwy.github.io/Tekweb/porto/game.html" target="_blank">
             <div class="project-arrow">↗</div>
             <div class="project-img">
-              <div class="card-visual card-visual--horror">
-                <div class="card-visual-grid"></div>
-                <div class="card-visual-content">
-                  <span class="card-visual-icon">👁</span>
-                  <span class="card-visual-label">Roblox Studio · Lua</span>
-                </div>
-              </div>
+              <div class="project-img-placeholder">[ ROBLOX HORROR GAME ]</div>
             </div>
             <div class="project-body">
-              <div class="project-num">02</div>
+              <div class="project-num">01</div>
               <div class="project-title">The Leak's Nights</div>
               <p class="project-desc">First-person horror game themed around Balinese culture. Players explore a haunted village, solve ritualistic puzzles, and stop a supernatural curse.</p>
               <div class="project-tech">
@@ -1062,14 +780,13 @@
             </div>
           </a>
 
-          <!-- 03 — MANCING -->
           <a class="project-card reveal" href="https://www.greenfoot.org/scenarios/33611" target="_blank">
             <div class="project-arrow">↗</div>
             <div class="project-img">
               <img src="https://chiknwy.github.io/imgstock/mancingameplayy.gif" alt="ManCing gameplay">
             </div>
             <div class="project-body">
-              <div class="project-num">03</div>
+              <div class="project-num">02</div>
               <div class="project-title">ManCing (MakanCacing)</div>
               <p class="project-desc">OOP final project — a fish-eats-worm arcade game built in Greenfoot with obstacles, bombs, and score tracking.</p>
               <div class="project-tech">
@@ -1080,20 +797,13 @@
             </div>
           </a>
 
-          <!-- 04 — INTERNSHIP BLOG (custom visual, no broken img) -->
           <a class="project-card reveal" href="https://chiknwy.github.io/Magang" target="_blank">
             <div class="project-arrow">↗</div>
             <div class="project-img">
-              <div class="card-visual card-visual--network">
-                <div class="card-visual-grid"></div>
-                <div class="card-visual-content">
-                  <span class="card-visual-icon">🔌</span>
-                  <span class="card-visual-label">Network Engineering</span>
-                </div>
-              </div>
+              <div class="project-img-placeholder">[ INTERNSHIP BLOG ]</div>
             </div>
             <div class="project-body">
-              <div class="project-num">04</div>
+              <div class="project-num">03</div>
               <div class="project-title">Internship Documentation Blog</div>
               <p class="project-desc">Network engineering internship blog at PT. Adita Nusantara Solution — daily logs, technical docs, fiber optics, access points.</p>
               <div class="project-tech">
@@ -1104,14 +814,13 @@
             </div>
           </a>
 
-          <!-- 05 — WEB GIS -->
           <a class="project-card reveal" href="https://github.com/chiknwy/I_Ben-Project" target="_blank">
             <div class="project-arrow">↗</div>
             <div class="project-img">
               <img src="https://chiknwy.github.io/imgstock/ss%20iben.jpg" alt="Web GIS">
             </div>
             <div class="project-body">
-              <div class="project-num">05</div>
+              <div class="project-num">04</div>
               <div class="project-title">Web GIS — Gas Station Finder</div>
               <p class="project-desc">Interactive map showing nearby gas stations with fuel availability. Users can locate stations and purchase fuel online.</p>
               <div class="project-tech">
@@ -1122,20 +831,36 @@
             </div>
           </a>
 
-          <!-- 06 — CREDIT SIMULATION -->
           <a class="project-card reveal" href="https://chiknwy.github.io/Tekweb/vue/" target="_blank">
             <div class="project-arrow">↗</div>
             <div class="project-img">
               <img src="https://chiknwy.github.io/imgstock/ss%20credit.png" alt="Credit Simulation">
             </div>
             <div class="project-body">
-              <div class="project-num">06</div>
+              <div class="project-num">05</div>
               <div class="project-title">Credit Simulation — Vue.js</div>
               <p class="project-desc">Web calculator for credit/loan simulation built with Vue.js and Tailwind CSS as a university web tech assignment.</p>
               <div class="project-tech">
                 <span class="tag">Vue.js</span>
                 <span class="tag">Tailwind</span>
                 <span class="tag green">Finance</span>
+              </div>
+            </div>
+          </a>
+
+          <a class="project-card reveal" href="https://chiknwy.github.io/Tekweb/" target="_blank">
+            <div class="project-arrow">↗</div>
+            <div class="project-img">
+              <img src="https://chiknwy.github.io/imgstock/ss%20fbnc.png" alt="Web Technology Task">
+            </div>
+            <div class="project-body">
+              <div class="project-num">06</div>
+              <div class="project-title">Web Technology Task 1</div>
+              <p class="project-desc">HTML/JavaScript calculator for geometric shapes and Fibonacci Sequence — first web tech assignment.</p>
+              <div class="project-tech">
+                <span class="tag">HTML</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag green">Math</span>
               </div>
             </div>
           </a>
@@ -1147,7 +872,7 @@
     <!-- ORGANIZATION -->
     <section id="organization" style="position:relative;z-index:1;">
       <div class="section-wrap">
-        <div class="section-label reveal">07 — Organizations</div>
+        <div class="section-label reveal">06 — Organizations</div>
         <h2 class="section-title reveal">Experience & Involvement</h2>
 
         <div class="org-list">
@@ -1179,7 +904,7 @@
     <!-- CONTACT -->
     <section id="contact" style="position:relative;z-index:1;">
       <div class="section-wrap">
-        <div class="section-label reveal">08 — Contact</div>
+        <div class="section-label reveal">07 — Contact</div>
         <h2 class="section-title reveal">Let's Build Something</h2>
 
         <div class="contact-grid">

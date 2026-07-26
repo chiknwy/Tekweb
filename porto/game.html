@@ -1,426 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Leak's Nights — Chiko Satria</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #050810;
-      --surface: #0b1120;
-      --surface2: #111928;
-      --border: rgba(99,179,237,0.12);
-      --accent: #38bdf8;
-      --accent2: #818cf8;
-      --accent3: #34d399;
-      --text: #cbd5e1;
-      --text-dim: #64748b;
-      --text-bright: #f1f5f9;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg); color: var(--text);
-      font-family: 'DM Sans', sans-serif; font-weight: 300;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: ''; position: fixed; inset: 0; z-index: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; opacity: 0.4;
-    }
-    .ambient { position: fixed; z-index: 0; pointer-events: none; border-radius: 50%; filter: blur(100px); opacity: 0.06; }
-    .ambient-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; left: -200px; }
-    .ambient-2 { width: 500px; height: 500px; background: var(--accent2); bottom: 10%; right: -150px; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Leak's Nights — Chiko Satria</title>
+<style>
+  :root{
+    --bg:#0E0F19;
+    --surface:#161826;
+    --border:#2a2d3d;
+    --text:#87A0B2;
+    --muted:#857885;
+    --bright:#e7ecef;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 48px;
-      background: rgba(5,8,16,0.75); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      transition: padding 0.3s;
-    }
-    .nav-logo { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--accent3); letter-spacing: 0.1em; text-decoration: none; }
-    .nav-logo span { color: var(--text-dim); }
-    .nav-links { display: flex; gap: 36px; align-items: center; }
-    .nav-links a {
-      font-family: 'Space Mono', monospace; font-size: 11px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-dim); text-decoration: none; transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-links a.active { color: var(--accent3); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .hamburger span { width: 22px; height: 1px; background: var(--text-dim); transition: all 0.3s; display: block; }
-    .mobile-menu {
-      display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99;
-      background: rgba(5,8,16,0.97); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 24px 48px; flex-direction: column; gap: 20px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; }
+  header{border-bottom:1px solid var(--border);padding:16px 0;position:sticky;top:0;background:var(--bg);z-index:10}
+  header .wrap{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:700;color:var(--bright);text-decoration:none}
+  nav a{margin-left:20px;text-decoration:none;color:var(--muted);font-size:14px}
+  nav a:hover{color:var(--bright)}
 
-    /* ── MAIN ── */
-    main { position: relative; z-index: 1; padding-top: 80px; }
+  section{border-bottom:1px solid var(--border);padding:56px 0}
+  h1{font-size:32px;color:var(--bright);margin-bottom:12px}
+  h2{font-size:22px;color:var(--bright);margin-bottom:24px}
+  .back{display:inline-block;margin-bottom:16px;color:var(--muted);text-decoration:none;font-size:14px}
+  .back:hover{color:var(--bright)}
+  .desc{max-width:600px;margin-bottom:20px}
+  .badges span{display:inline-block;font-size:12px;padding:4px 10px;border:1px solid var(--border);color:var(--muted);margin:0 8px 8px 0}
 
-    .section-wrap { max-width: 1200px; margin: 0 auto; padding: 80px 48px; border-top: 1px solid var(--border); }
-    .section-label {
-      font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--text-dim); margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
-    }
-    .section-label::after { content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--border); }
-    .section-title {
-      font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800; color: var(--text-bright); letter-spacing: -0.02em; margin-bottom: 40px;
-    }
+  .video-wrap{border:1px solid var(--border);background:var(--surface)}
+  .video-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
 
-    /* ── HERO ── */
-    .game-hero {
-      max-width: 1200px; margin: 0 auto;
-      padding: 80px 48px 60px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
-    }
-    .game-hero-left {}
-    .back-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Space Mono', monospace; font-size: 10px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--text-dim); text-decoration: none;
-      margin-bottom: 28px; transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--accent); }
-    .game-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Space Mono', monospace; font-size: 10px;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent3); margin-bottom: 20px;
-    }
-    .game-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent3); }
-    .game-title {
-      font-family: 'Syne', sans-serif; font-size: clamp(40px, 5vw, 64px);
-      font-weight: 800; color: var(--text-bright); letter-spacing: -0.02em; line-height: 1;
-      margin-bottom: 20px;
-    }
-    .game-title .hl { background: linear-gradient(135deg, var(--accent3), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .game-desc { font-size: 16px; line-height: 1.75; color: var(--text); margin-bottom: 32px; }
-    .game-meta { display: flex; flex-wrap: wrap; gap: 12px; }
-    .meta-badge {
-      font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
-      padding: 6px 14px; border: 1px solid var(--border);
-      background: var(--surface); color: var(--text-dim); border-radius: 2px;
-    }
-    .meta-badge.green { border-color: rgba(52,211,153,0.25); color: var(--accent3); background: rgba(52,211,153,0.05); }
-    .meta-badge.blue { border-color: rgba(56,189,248,0.25); color: var(--accent); background: rgba(56,189,248,0.05); }
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;cursor:pointer;border:1px solid var(--border);display:block}
+  .gallery-note{font-size:12px;color:var(--muted);margin-top:12px;text-align:right}
 
-    .game-hero-right {
-      position: relative;
-    }
-    .game-hero-img-wrap {
-      position: relative; border: 1px solid var(--border);
-      background: var(--surface2); overflow: hidden;
-    }
-    .game-hero-img-wrap::before {
-      content: ''; position: absolute; top: 0; left: 0;
-      right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent3), transparent);
-    }
-    .game-hero-img-wrap img { width: 100%; display: block; opacity: 0.85; }
-    .game-hero-img-wrap .placeholder {
-      width: 100%; aspect-ratio: 16/9;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em;
-    }
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;z-index:100}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:88vw;max-height:84vh;object-fit:contain}
+  .lb-btn{position:absolute;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:8px 14px;cursor:pointer;font-size:16px}
+  .lb-close{top:20px;right:24px}
+  .lb-prev{left:20px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:20px;top:50%;transform:translateY(-50%)}
+  .lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:13px}
 
-    /* ── VIDEO ── */
-    .video-wrap {
-      position: relative; border: 1px solid var(--border);
-      background: var(--surface2); overflow: hidden;
-    }
-    .video-wrap::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      z-index: 1;
-    }
-    .video-wrap iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
+  footer{padding:24px 0;text-align:center;color:var(--muted);font-size:13px}
 
-    /* ── GALLERY ── */
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
-    }
-    .gallery-item {
-      position: relative; overflow: hidden; cursor: pointer;
-      background: var(--surface2); aspect-ratio: 16/10;
-      border: 1px solid var(--border);
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      opacity: 0.7; transition: opacity 0.3s, transform 0.5s;
-      display: block;
-    }
-    .gallery-item:hover img { opacity: 1; transform: scale(1.04); }
-    .gallery-item .overlay {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(5,8,16,0.4);
-      opacity: 0; transition: opacity 0.3s;
-      font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-bright); letter-spacing: 0.1em;
-    }
-    .gallery-item:hover .overlay { opacity: 1; }
-    .gallery-item .img-num {
-      position: absolute; bottom: 10px; right: 12px;
-      font-family: 'Space Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em;
-    }
-
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(5,8,16,0.96); backdrop-filter: blur(8px);
-      display: none; align-items: center; justify-content: center;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-img { max-width: 88vw; max-height: 84vh; object-fit: contain; display: block; }
-    .lightbox-close {
-      position: absolute; top: 24px; right: 32px;
-      font-family: 'Space Mono', monospace; font-size: 20px;
-      color: var(--text-dim); cursor: pointer; background: none; border: none;
-      transition: color 0.2s;
-    }
-    .lightbox-close:hover { color: var(--accent); }
-    .lightbox-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      font-family: 'Space Mono', monospace; font-size: 20px;
-      color: var(--text-dim); cursor: pointer; background: var(--surface);
-      border: 1px solid var(--border); padding: 12px 16px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .lightbox-arrow:hover { color: var(--accent); border-color: var(--accent); }
-    .lightbox-prev { left: 24px; }
-    .lightbox-next { right: 24px; }
-    .lightbox-counter {
-      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--border); padding: 28px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .footer-copy { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-dim); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 18px 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .game-hero { grid-template-columns: 1fr; padding: 60px 24px 40px; gap: 40px; }
-      .section-wrap { padding: 56px 24px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
-      .mobile-menu { padding: 20px 24px; }
-    }
-    @media (max-width: 500px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  @media(max-width:700px){nav{display:none}.gallery{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <a class="nav-logo" href="index.html">CS<span>/</span>portfolio</a>
-    <div class="nav-links">
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">Chiko Satria</a>
+    <nav>
       <a href="index.html">Home</a>
       <a href="index.html#about">Skills</a>
-      <a href="index.html#portfolio" class="active">Work</a>
+      <a href="index.html#portfolio">Work</a>
       <a href="index.html#contact">Contact</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html" onclick="closeMobile()">Home</a>
-    <a href="index.html#about" onclick="closeMobile()">Skills</a>
-    <a href="index.html#portfolio" onclick="closeMobile()">Work</a>
-    <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <main>
+<main>
 
-    <!-- HERO -->
-    <div class="game-hero">
-      <div class="game-hero-left reveal">
-        <a href="index.html#portfolio" class="back-link">← Back to Portfolio</a>
-        <div class="game-tag">Roblox Studio · Lua</div>
-        <h1 class="game-title">The <span class="hl">Leak's</span> Nights</h1>
-        <p class="game-desc">
-          A first-person horror game rooted in Balinese culture. Set in a village preparing for a 
-          <em>Calonarang</em> performance, you play a university student who accidentally awakens 
-          the Leak — a shadow creature that haunts those who disrespect tradition. Uncover secrets, 
-          solve ritualistic puzzles, and light sacred incense to break the curse.
-        </p>
-        <div class="game-meta">
-          <span class="meta-badge green">~1–2 hours gameplay</span>
-          <span class="meta-badge blue">First-Person Horror</span>
-          <span class="meta-badge">Roblox Studio</span>
-          <span class="meta-badge">Balinese Culture</span>
-        </div>
-      </div>
-      <div class="game-hero-right reveal">
-        <div class="game-hero-img-wrap">
-          <div class="placeholder">[ GAME THUMBNAIL ]</div>
-        </div>
+  <section>
+    <div class="wrap">
+      <a class="back" href="index.html#portfolio">← Back to Portfolio</a>
+      <h1>The Leak's Nights</h1>
+      <p class="desc">A first-person horror game rooted in Balinese culture. Set in a village preparing for a Calonarang performance, you play a university student who accidentally awakens the Leak — a shadow creature that haunts those who disrespect tradition. Uncover secrets, solve ritualistic puzzles, and light sacred incense to break the curse.</p>
+      <div class="badges">
+        <span>~1–2 hours gameplay</span>
+        <span>First-Person Horror</span>
+        <span>Roblox Studio</span>
+        <span>Balinese Culture</span>
       </div>
     </div>
+  </section>
 
-    <!-- VIDEO -->
-    <section>
-      <div class="section-wrap">
-        <div class="section-label reveal">01 — Demo</div>
-        <h2 class="section-title reveal">Gameplay Video</h2>
-        <div class="video-wrap reveal">
-          <iframe
-            src="https://drive.google.com/file/d/1SECqz52MrwxK2gWbXLT6Y1X7HnKBl45-/preview"
-            allow="autoplay" allowfullscreen>
-          </iframe>
-        </div>
+  <section>
+    <div class="wrap">
+      <h2>Gameplay Video</h2>
+      <div class="video-wrap">
+        <iframe src="https://drive.google.com/file/d/1SECqz52MrwxK2gWbXLT6Y1X7HnKBl45-/preview" allow="autoplay" allowfullscreen></iframe>
       </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section>
-      <div class="section-wrap">
-        <div class="section-label reveal">02 — Screenshots</div>
-        <h2 class="section-title reveal">Gallery &amp; Development Stages</h2>
-        <div class="gallery-grid reveal">
-          <div class="gallery-item" data-src="img/ssgame/ssdevelopingstage2.png">
-            <img src="img/ssgame/ssdevelopingstage2.png" alt="Character Design">
-            <div class="overlay">View Full</div>
-            <span class="img-num">01</span>
-          </div>
-          <div class="gallery-item" data-src="img/ssgame/ss1game.png">
-            <img src="img/ssgame/ss1game.png" alt="Screenshot 1">
-            <div class="overlay">View Full</div>
-            <span class="img-num">02</span>
-          </div>
-          <div class="gallery-item" data-src="img/ssgame/ss1lobby.png">
-            <img src="img/ssgame/ss1lobby.png" alt="Lobby Screenshot">
-            <div class="overlay">View Full</div>
-            <span class="img-num">03</span>
-          </div>
-          <div class="gallery-item" data-src="img/ssgame/ssdevelopingstage1.png">
-            <img src="img/ssgame/ssdevelopingstage1.png" alt="Dev Stage 1">
-            <div class="overlay">View Full</div>
-            <span class="img-num">04</span>
-          </div>
-          <div class="gallery-item" data-src="img/ssgame/ssdevelopingstage.png">
-            <img src="img/ssgame/ssdevelopingstage.png" alt="Dev Stage">
-            <div class="overlay">View Full</div>
-            <span class="img-num">05</span>
-          </div>
-          <div class="gallery-item" data-src="img/ssgame/ssdevelopingstage3.png">
-            <img src="img/ssgame/ssdevelopingstage3.png" alt="Dev Stage 3">
-            <div class="overlay">View Full</div>
-            <span class="img-num">06</span>
-          </div>
-        </div>
-        <p style="font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:0.1em;margin-top:16px;text-align:right;">
-          Click any image to view fullscreen · keyboard arrows to navigate
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lb-close">✕</button>
-    <button class="lightbox-arrow lightbox-prev" id="lb-prev">‹</button>
-    <img class="lightbox-img" id="lb-img" src="" alt="">
-    <button class="lightbox-arrow lightbox-next" id="lb-next">›</button>
-    <div class="lightbox-counter" id="lb-counter">1 / 6</div>
-  </div>
-
-  <footer>
-    <span class="footer-copy">© 2026 Chiko Satria. All Rights Reserved.</span>
-    <div class="footer-links">
-      <a href="index.html">Portfolio</a>
-      <a href="mailto:chikogitasatria23@gmail.com">Email</a>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    // Nav scroll shrink
-    window.addEventListener('scroll', () => {
-      const nb = document.getElementById('navbar');
-      nb.style.padding = window.scrollY > 60 ? '12px 48px' : '';
-    });
+  <section>
+    <div class="wrap">
+      <h2>Gallery & Development Stages</h2>
+      <div class="gallery">
+        <img src="img/ssgame/ssdevelopingstage2.png" alt="Character Design">
+        <img src="img/ssgame/ss1game.png" alt="Screenshot 1">
+        <img src="img/ssgame/ss1lobby.png" alt="Lobby Screenshot">
+        <img src="img/ssgame/ssdevelopingstage1.png" alt="Dev Stage 1">
+        <img src="img/ssgame/ssdevelopingstage.png" alt="Dev Stage">
+        <img src="img/ssgame/ssdevelopingstage3.png" alt="Dev Stage 3">
+      </div>
+      <p class="gallery-note">Click any image to view fullscreen · arrow keys to navigate</p>
+    </div>
+  </section>
 
-    // Hamburger
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('open');
-    });
-    function closeMobile() { document.getElementById('mobile-menu').classList.remove('open'); }
+</main>
 
-    // Reveal
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn lb-close" id="lb-close">✕</button>
+  <button class="lb-btn lb-prev" id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-btn lb-next" id="lb-next">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lb-img');
-    const lbCounter = document.getElementById('lb-counter');
-    const items = Array.from(document.querySelectorAll('.gallery-item'));
-    const srcs = items.map(i => i.dataset.src);
-    let cur = 0;
+<footer>© 2026 Chiko Satria. All Rights Reserved.</footer>
 
-    function openLB(i) {
-      cur = i; lbImg.src = srcs[cur];
-      lbCounter.textContent = `${cur + 1} / ${srcs.length}`;
-      lightbox.classList.add('open');
-    }
-    function moveLB(dir) {
-      cur = (cur + dir + srcs.length) % srcs.length;
-      lbImg.src = srcs[cur];
-      lbCounter.textContent = `${cur + 1} / ${srcs.length}`;
-    }
-
-    items.forEach((item, i) => item.addEventListener('click', () => openLB(i)));
-    document.getElementById('lb-close').addEventListener('click', () => lightbox.classList.remove('open'));
-    document.getElementById('lb-prev').addEventListener('click', () => moveLB(-1));
-    document.getElementById('lb-next').addEventListener('click', () => moveLB(1));
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-    document.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'ArrowRight') moveLB(1);
-      if (e.key === 'ArrowLeft') moveLB(-1);
-      if (e.key === 'Escape') lightbox.classList.remove('open');
-    });
-  </script>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  const imgs = Array.from(document.querySelectorAll('.gallery img'));
+  const srcs = imgs.map(i => i.src);
+  let cur = 0;
+  function openLB(i){ cur=i; lbImg.src=srcs[cur]; lbCounter.textContent=`${cur+1} / ${srcs.length}`; lightbox.classList.add('open'); }
+  function moveLB(d){ cur=(cur+d+srcs.length)%srcs.length; lbImg.src=srcs[cur]; lbCounter.textContent=`${cur+1} / ${srcs.length}`; }
+  imgs.forEach((img,i) => img.addEventListener('click', () => openLB(i)));
+  document.getElementById('lb-close').addEventListener('click', () => lightbox.classList.remove('open'));
+  document.getElementById('lb-prev').addEventListener('click', () => moveLB(-1));
+  document.getElementById('lb-next').addEventListener('click', () => moveLB(1));
+  lightbox.addEventListener('click', e => { if(e.target===lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key==='ArrowRight') moveLB(1);
+    if(e.key==='ArrowLeft') moveLB(-1);
+    if(e.key==='Escape') lightbox.classList.remove('open');
+  });
+</script>
 </body>
 </html>
